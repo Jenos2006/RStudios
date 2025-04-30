@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCONS | Private Roblox Servers</title>
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-red: #cc0000;
+            --pure-black: #000000;
+            --space-black: #0a0a12;
+            --neon-red: #ff3366;
+            --star-white: #e0e0e0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', 'Arial', sans-serif;
+            background-color: var(--space-black);
+            color: var(--star-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 51, 102, 0.1) 0%, transparent 20%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white"/><circle cx="50" cy="30" r="0.7" fill="white"/><circle cx="80" cy="20" r="0.3" fill="white"/><circle cx="10" cy="70" r="0.4" fill="white"/><circle cx="70" cy="80" r="0.6" fill="white"/></svg>');
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--pure-black), var(--dark-red), var(--pure-black));
+            padding: 20px 0;
+            border-bottom: 2px solid var(--neon-red);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .logo span {
+            color: var(--star-white);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--star-white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 10px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-red);
+            text-shadow: 0 0 5px var(--neon-red);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--neon-red);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--space-black) 70%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--primary-red);
+            text-shadow: 0 0 15px var(--neon-red);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 20px auto;
+            letter-spacing: 1px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-red), var(--neon-red));
+            color: var(--star-white);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.8);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .btn-outline:hover {
+            background: linear-gradient(45deg, var(--primary-red), var(--neon-red));
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.8);
+        }
+        
+        .discord-btn {
+            background: #5865F2;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+        }
+        
+        .discord-btn:hover {
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.8);
+        }
+        
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--primary-red);
+            text-shadow: 0 0 10px var(--neon-red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: rgba(10, 10, 18, 0.7);
+            border: 1px solid var(--dark-red);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-red), var(--neon-red), var(--primary-red));
+            z-index: -1;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--primary-red);
+        }
+        
+        .service-card p {
+            line-height: 1.6;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--neon-red);
+        }
+        
+        footer {
+            background: var(--pure-black);
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid var(--neon-red);
+        }
+        
+        .credit {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 5px var(--neon-red);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .credit::before, .credit::after {
+            content: '//';
+            color: var(--star-white);
+            margin: 0 10px;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">RO<span>CONS</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#private">Private</a></li>
+                    <li><a href="#public">Public</a></li>
+                    <li><a href="https://discord.gg/rocons" target="_blank">Discord</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ROBLOX <span class="pulse">SERVERS</span></h1>
+            <p>Premium private Roblox servers that never shut down. Your world, your rules.</p>
+            <div>
+                <a href="#private" class="btn">Private Servers</a>
+                <a href="#public" class="btn btn-outline">Public Lobbies</a>
+                <a href="https://discord.gg/rocons" class="btn discord-btn" target="_blank">Join Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="private">
+        <div class="container">
+            <h2 class="section-title">PRIVATE SERVERS</h2>
+            <div class="services">
+                <div class="service-card float" style="animation-delay: 0.2s;">
+                    <div class="service-icon">🔒</div>
+                    <h3>Exclusive Access</h3>
+                    <p>Your personal Roblox server that stays online 24/7. No random joins, no interruptions.</p>
+                </div>
+                <div class="service-card float" style="animation-delay: 0.4s;">
+                    <div class="service-icon">⚡</div>
+                    <h3>Premium Performance</h3>
+                    <p>Dedicated resources for smooth gameplay without lag or server crashes.</p>
+                </div>
+                <div class="service-card float" style="animation-delay: 0.6s;">
+                    <div class="service-icon">♾️</div>
+                    <h3>Permanent Worlds</h3>
+                    <p>Your builds and progress are saved forever - no unexpected resets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="public" style="background: rgba(255, 0, 0, 0.03);">
+        <div class="container">
+            <h2 class="section-title">PUBLIC LOBBIES</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Community Hub</h3>
+                    <p>Meet new players, make friends, and collaborate on projects together.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <h3>Public Events</h3>
+                    <p>Join organized games and tournaments with the ROCONS community.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚠️</div>
+                    <h3>Notice</h3>
+                    <p>Public servers may occasionally reset for maintenance and updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" style="background: rgba(0, 0, 0, 0.5);">
+        <div class="container">
+            <h2 class="section-title">GET STARTED</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p>Join our Discord to access private servers or play in our public lobbies.</p>
+                <a href="https://discord.gg/rocons" class="btn discord-btn" style="margin-top: 30px;" target="_blank">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="credit">This test website made by Jenos2006</div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation when scrolling
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.service-card');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        });
+
+        // Trigger scroll event on load to animate visible elements
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
